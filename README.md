@@ -1,0 +1,57 @@
+# chat-discussion-java-
+le projet consiste à faire une application chat entre deux ou plusieurs ordinateur.
+la communication est via socket et multithread.
+
+dans le coté  serveur nommé: ServerFinal.java, on y trouve 3 classe dont 2 classe fille telle que: 
+1 classe fille sert à activer les boutons et l'autre classe fille c'est la classe "ClientHandle" qui tient la connexion
+entre les clients,et aussi la communication.
+dans le package serverfinal on y trouve aussi la classe Database.java
+
+jusqu'ici,
+1- le serveur repond déjà à l'indication envoyer depuis un client qui demande à faire une publication
+2- le serveur repond à la demande du client qui veut envoyer un message privé à un autre client et partage deja au client cible.
+3- le serveur repond la demande partage entre groupe
+4- le serveur enregistre les informations tels que nom, prenoms et MDP dans la base de donnée.
+
+---------------------------------------------------------------------
+Dans le coté client on trouve plusieurs classe tels que: 
+- InterfaceFinal(extends jframe) qui conteint les classes filles qui existent dant le projet. c'estdans cette classe qui est placé le socket
+vers le serveur. dans la methode socketConnection(); les parametres dans cette methodes ne sont pas tous utiles simultanement
+mais pour facilité le transfert de message(demande), on l'a fait.
+
+- creationCompte(extends jframe) qui sert à recuperer les données entrées par l'utilisateur.seule cette classe qui
+fonctionne déjà avec la BDD
+
+- inputReader qui contient les flux entrees vers client
+
+- group qui contient les foctionnalité et l'interface du groupe
+
+- messsagePrive qui contient les foctionnalité et l'interface du groupe
+
+----------------------------------------------------------------------
+limite:
+le client ne peut pas repondre directement au message prive de son expediteur dans la boite de dialogue pour mp, solution il doit
+selectionner l'utilisateur dans le jlist pour repondre a cet utilisateur.
+
+les clients participants ne peuvent pas repondre directement au message groupé crée par un administrateur, dans la boite de dialogue pour mp, solution il doit
+selectionner l'utilisateur dans le jlist pour repondre a cet utilisateur.
+
+ ---------------------------------------------------------------------------
+efficacité
+on peut faire une publication
+toute les participant connectés sont visible dans le fil de discussion(jlist a dorite)
+
+#privé: on doit choisir dans la  liste des utilisateurs connectés pour pouvoir envoyer un message prive
+
+#groupe: tout le monde peut créer un ou plusieurs groupes et peut gerer son groupe: il est le seul admin du groupe, il peut ajouter et supprimer des participants
+	pour creer un groupe, il suffit de taper dans le jtextField approprié les noms des participants en separant par "," (virgule) si plusieurs
+une fois créé, les participants sont visibles dans le fil de discussion du groupe.
+	ajouter dans legroupe: meme quand le groupe est deja crée, on peut quand meme ajouter des participants, il suffit d'ajouter dans le textField leurs noms en separant par virgule si plusieurs puis cliquer "ADD"
+	supprimant des participant: il suffit de cliquer le nom de participant à supprimer, dans la fil de discussion,le nom selectionné sera afficher dans la textField et on clique sur le bouton "REMOVE"
+--------------------------------------------------------------------------------
+BASE DE DONNEE 
+users: admin
+passwords: admin
+
+table: registrations
+champs: id,name,prenom,login,motdp
